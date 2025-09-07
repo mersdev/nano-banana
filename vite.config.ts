@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
 
     // Set base path for GitHub Pages deployment
     const base = process.env.NODE_ENV === 'production'
-      ? '/tanah-airku-series/' // Replace with your actual repository name
+      ? '/nano-banana/' // Repository name from https://github.com/mersdev/nano-banana
       : '/';
 
     return {
