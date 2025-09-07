@@ -14,11 +14,11 @@ interface ProductPageProps {
 
 // Updated color options with actual color values for swatches
 const colorOptions: ColorOption[] = [
-  { name: 'Black', image: '/black-shirt.png' },
-  { name: 'Cream', image: '/cream-shirt.png' },
-  { name: 'Maroon', image: '/maroon-shirt.png' },
-  { name: 'Navy Blue', image: '/navy-blue-shirt.png' },
-  { name: 'Rainbow', image: '/rainbow-shirt.png' },
+  { name: 'Black', image: './black-shirt.png' },
+  { name: 'Cream', image: './cream-shirt.png' },
+  { name: 'Maroon', image: './maroon-shirt.png' },
+  { name: 'Navy Blue', image: './navy-blue-shirt.png' },
+  { name: 'Rainbow', image: './rainbow-shirt.png' },
 ];
 
 // Color swatch mapping - only for available colors

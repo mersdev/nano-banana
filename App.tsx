@@ -35,8 +35,8 @@ const App: React.FC = () => {
             {/* Logo */}
             <div className="flex items-center">
               <img
-                src="/logo.png"
-                alt="UNIQLO"
+                src="./logo.png"
+                alt="Tanah Airku Series"
                 className="h-8 w-auto"
               />
             </div>
