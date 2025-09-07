@@ -163,9 +163,11 @@ firestore-debug.log
 Dockerfile
 docker-compose.yml
 
-# Kubernetes
+# Kubernetes (but keep GitHub Actions workflows)
 *.yaml
 *.yml
+!.github/workflows/*.yml
+!.github/workflows/*.yaml
 !package.json
 !tsconfig.json
 !vite.config.ts
