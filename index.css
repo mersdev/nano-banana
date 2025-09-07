@@ -1,0 +1,339 @@
+/* Uniqlo-Style Virtual Try-On Application */
+
+/* Import Google Fonts for clean typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #333333;
+}
+
+/* Uniqlo-style design system CSS variables */
+:root {
+  --uniqlo-primary: #333333;
+  --uniqlo-secondary: #666666;
+  --uniqlo-accent: #ff0000;
+  --uniqlo-background: #ffffff;
+  --uniqlo-surface: #f8f8f8;
+  --uniqlo-text-primary: #333333;
+  --uniqlo-text-secondary: #666666;
+  --uniqlo-text-muted: #999999;
+  --uniqlo-border: #e0e0e0;
+  --uniqlo-border-focus: #333333;
+  --uniqlo-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --uniqlo-radius: 4px;
+  --uniqlo-font-primary: 'Inter', sans-serif;
+  --uniqlo-font-secondary: 'Noto Sans', sans-serif;
+}
+
+/* Custom scrollbar for clean feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f8f8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+/* Clean animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Utility classes for clean design */
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Custom focus styles for accessibility */
+.focus-ring:focus {
+  outline: 2px solid var(--uniqlo-border-focus);
+  outline-offset: 2px;
+}
+
+/* Clean gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #333333 0%, #666666 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+}
+
+.gradient-surface {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+}
+
+/* Text selection styling */
+::selection {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* Clean button hover effects */
+.button-hover {
+  transition: all 0.2s ease;
+}
+
+.button-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Clean card styling */
+.card {
+  background: #ffffff;
+  border: 1px solid var(--uniqlo-border);
+  box-shadow: var(--uniqlo-shadow);
+  border-radius: var(--uniqlo-radius);
+}
+
+/* Loading spinner clean styling */
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid var(--uniqlo-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive design for mobile-first clean experience */
+@media (max-width: 768px) {
+  .mobile-padding {
+    padding: 1rem;
+  }
+
+  .mobile-text {
+    font-size: 0.875rem;
+  }
+
+  /* Improve touch targets for mobile */
+  .color-swatch {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .size-button {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 0.875rem;
+  }
+
+  /* Better spacing for mobile */
+  .add-to-cart {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* Improve mobile upload area */
+  .upload-area {
+    min-height: 200px;
+    padding: 2rem 1rem;
+  }
+}
+
+/* Tablet styles for better medium screen experience */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .grid-cols-2 {
+    gap: 2rem;
+  }
+
+  .product-image {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Clean typography styles */
+.heading {
+  font-family: var(--uniqlo-font-primary);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--uniqlo-text-primary);
+}
+
+.body-text {
+  font-family: var(--uniqlo-font-primary);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--uniqlo-text-secondary);
+}
+
+/* Clean form elements */
+.input {
+  border: 1px solid var(--uniqlo-border);
+  border-radius: var(--uniqlo-radius);
+  padding: 0.75rem 1rem;
+  font-family: var(--uniqlo-font-primary);
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.input:focus {
+  border-color: var(--uniqlo-border-focus);
+  box-shadow: 0 0 0 2px rgba(51, 51, 51, 0.1);
+  outline: none;
+}
+
+/* Uniqlo-style color swatches */
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.color-swatch.selected {
+  border-color: var(--uniqlo-primary);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--uniqlo-primary);
+}
+
+/* Special styling for cream color swatch to make it more visible */
+.color-swatch[style*="background-color: rgb(245, 245, 220)"],
+.color-swatch[style*="backgroundColor: #f5f5dc"] {
+  border: 2px solid #e5e7eb !important;
+}
+
+.color-swatch[style*="background-color: rgb(245, 245, 220)"]:hover,
+.color-swatch[style*="backgroundColor: #f5f5dc"]:hover {
+  border-color: #9ca3af !important;
+}
+
+/* Size selection buttons */
+.size-button {
+  padding: 8px 12px;
+  border: 1px solid var(--uniqlo-border);
+  background: #ffffff;
+  color: var(--uniqlo-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  text-align: center;
+}
+
+.size-button:hover {
+  border-color: var(--uniqlo-primary);
+}
+
+.size-button.selected {
+  background: var(--uniqlo-primary);
+  color: #ffffff;
+  border-color: var(--uniqlo-primary);
+}
+
+.size-button:disabled {
+  background: #f5f5f5;
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Add to cart button */
+.add-to-cart {
+  background: var(--uniqlo-primary);
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-to-cart:hover {
+  background: #222222;
+}
+
+.add-to-cart:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
